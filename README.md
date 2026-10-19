@@ -1,4 +1,4 @@
-# webmail_forward
+# NTU Webmail Forward
 
 定期從 NTU Mail（POP3）收信，並透過 IMAP `APPEND` 直接寫入 Gmail。
 
