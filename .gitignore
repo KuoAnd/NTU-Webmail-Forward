@@ -1,0 +1,6 @@
+config.ini
+seen_uids.json
+seen_uids.json.tmp
+.ntu2gmail.lock
+*.log
+__pycache__/
