@@ -6,6 +6,7 @@ Meant to be run periodically (e.g. from cron). Only the standard library is used
 import argparse
 import configparser
 import email
+import email.header
 import email.policy
 import email.utils
 import fcntl
@@ -123,7 +124,11 @@ def run(cfg, args):
         for num, uid in new:
             raw = b"\r\n".join(pop.retr(num)[1]) + b"\r\n"
             msg = email.message_from_bytes(raw, policy=email.policy.compat32)
-            subject = msg.get("Subject", "")
+            try:
+                subject = str(email.header.make_header(email.header.decode_header(msg.get("Subject", ""))))
+            except Exception:
+                subject = msg.get("Subject", "")
+            subject = " ".join(subject.split())
 
             if all_mail and already_in_gmail(gm, msg.get("Message-ID")):
                 log.info("skip (already in Gmail): uid=%s %s", uid, subject)
