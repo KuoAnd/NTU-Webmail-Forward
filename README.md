@@ -46,13 +46,15 @@ Gmail 已停止支援以 POP3 收取其他信箱，這個腳本用來取代該�
 ## 安裝與設定
 
 ```bash
-git clone git@github.com:<your-account>/webmail_forward.git ~/webmail_forward
-cd ~/webmail_forward
+git clone https://github.com/KuoAnd/NTU-Webmail-Forward.git ~/NTU-Webmail-Forward
+cd ~/NTU-Webmail-Forward
 
 cp config.example.ini config.ini
 chmod 600 config.ini        # 必要：其他人可讀時程式會拒絕執行
 vim config.ini
 ```
+
+建議放在家目錄；資工系工作站的 `/tmp2` 會不定期清理，不適合放需要長期執行的程式與設定檔。
 
 `config.ini` 範例：
 
@@ -117,14 +119,14 @@ INTERVAL=5 ./run.sh   # 改為每 5 分鐘
 查看執行狀況：
 
 ```bash
-tail -f ~/webmail_forward/ntu2gmail.log
+tail -f ~/NTU-Webmail-Forward/ntu2gmail.log
 ```
 
 注意：
 
 - **crontab 只在安裝它的那台工作站上有效**。換工作站時，先在舊機器 `./run.sh remove`，再到新機器執行 `./run.sh`，避免兩台同時執行
 - 程式有 lock 機制，上一次還沒跑完時，下一次會直接結束
-- 本系工作站規範允許收信用途，但請勿把間隔設得過短
+- [資工系工作站規範](https://nasalab.csie.ntu.edu.tw/workstation/computation_and_usage_rules.html)允許收信用途，但請勿把間隔設得過短
 
 ## 重新部署
 
