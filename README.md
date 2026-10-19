@@ -46,15 +46,15 @@ Gmail 已停止支援以 POP3 收取其他信箱，這個腳本用來取代該�
 ## 安裝與設定
 
 ```bash
-git clone https://github.com/KuoAnd/NTU-Webmail-Forward.git ~/NTU-Webmail-Forward
-cd ~/NTU-Webmail-Forward
+git clone https://github.com/KuoAnd/NTU-Webmail-Forward.git
+cd NTU-Webmail-Forward
 
 cp config.example.ini config.ini
 chmod 600 config.ini        # 必要：其他人可讀時程式會拒絕執行
 vim config.ini
 ```
 
-建議放在家目錄；資工系工作站的 `/tmp2` 會不定期清理，不適合放需要長期執行的程式與設定檔。
+專案可以放在任何位置，以下指令皆在專案目錄中執行。在資工系工作站上請避免放在 `/tmp2`，該處會不定期清理，不適合放需要長期執行的程式與設定檔。
 
 `config.ini` 範例：
 
@@ -119,7 +119,7 @@ INTERVAL=5 ./run.sh   # 改為每 5 分鐘
 查看執行狀況：
 
 ```bash
-tail -f ~/NTU-Webmail-Forward/ntu2gmail.log
+tail -f ntu2gmail.log
 ```
 
 注意：
